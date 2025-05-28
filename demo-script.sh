@@ -87,5 +87,5 @@ p "git commit -m 'update message machineconfig'"
 p
 
 # cleanup
-git checkout -- machineconfigs/inc/message.txt 2&>/dev/null
-git checkout -- machineconfigs/99-worker-message.yaml 2&>/dev/null
+git checkout -- machineconfigs/inc/message.txt
+git checkout -- machineconfigs/99-worker-message.yaml
