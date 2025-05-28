@@ -4,4 +4,4 @@ MachineConfigs should make machine management easy and automatic, but MachineCon
 
 Externalize any substantial text into include files and Use Butane to generate MachineConfigs.
 
-[![asciicast](https://asciinema.org/a/GuAMf0z8G3mofs94UNSj0eTZS.svg)](https://asciinema.org/a/GuAMf0z8G3mofs94UNSj0eTZS)
+[![asciicast](https://asciinema.org/a/721227.svg)](https://asciinema.org/a/721227)
