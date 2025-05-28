@@ -36,7 +36,7 @@ pei "bat -H 15 -l yaml machineconfigs/butane/99-worker-message.bu"
 p
 
 p "# 📓 Note that the included file is referenced by only the filename 'message.txt'."
-p "#   The path will be provided to the butane command later."
+p "#    The path will be provided to the butane command later."
 p
 p "# 🔍 Here is the message.txt file included by the butane file"
 pei "bat  machineconfigs/inc/message.txt"
@@ -64,9 +64,10 @@ p
 pei "bat machineconfigs/Makefile"
 p
 
-p "# 🎯 The default target teases out the dependencies and stores them in a deps file."
+p "# 🎯 Each Butane file is searched for includes which are noted as a dependency in a deps file."
+p "#    The default 'all' target builds any stale or missing corresponding YAML file for each BU."
 p
-p "# ⚙️ Here is the dependency file for the above machineconfig"
+p "# ⚙️ Here is the dependency file for the above MachineConfig"
 pei "bat machineconfigs/.deps/99-worker-message.d"
 p
 
@@ -81,6 +82,8 @@ pei "bat machineconfigs/99-worker-message.yaml"
 p
 
 p "# ✍️ Now you can commit the changes to git and let the 🤖s take over."
+p "git add machineconfigs"
+p "git commit -m 'update message machineconfig'"
 p
 
 # cleanup
