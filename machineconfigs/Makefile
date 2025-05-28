@@ -3,7 +3,7 @@ MACHINECONFIGS = $(BUTANES:butane/%.bu=%.yaml)
 INCLUDES_DIR = inc
 DEPS_DIR = .deps
 
-# Find all script files that might be referenced
+# Enumerate all files that might be included
 INCLUDE_FILES = $(wildcard $(INCLUDES_DIR)/*)
 
 # Create deps directory if it doesn't exist
@@ -19,6 +19,7 @@ $(DEPS_DIR)/%.d: butane/%.bu
 # Include all dependency files
 -include $(BUTANES:butane/%.bu=$(DEPS_DIR)/%.d)
 
+# Each machineconfig ends in yaml and depends on the same named file ending in bu
 %.yaml: butane/%.bu
 	butane -d $(INCLUDES_DIR) < $< > $@
 
