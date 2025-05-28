@@ -14,11 +14,6 @@ DEMO_ROOT=$GIT_ROOT
 #unset zle_bracketed_paste
 clear
 
-# prep
-echo 'Hello, world!' > machineconfigs/inc/message.txt
-rm machineconfigs/99-worker-message.yaml
-make -C machineconfigs 99-worker-message.yaml 2&>/dev/null
-
 p "# 👀 here are all the things..."
 pei tree -L 3 $DEMO_ROOT
 p
@@ -40,7 +35,7 @@ p "# 🔥 Here is a butane file for generating the above MachineConfig"
 pei "bat -H 15 -l yaml machineconfigs/butane/99-worker-message.bu"
 p
 
-p "# ♪ Note that the included file is referenced by only the filename 'message.txt'."
+p "# 📓 Note that the included file is referenced by only the filename 'message.txt'."
 p "#   The path will be provided to the butane command later."
 p
 p "# 🔍 Here is the message.txt file included by the butane file"
@@ -52,16 +47,16 @@ pei "date >> machineconfigs/inc/message.txt"
 pei "bat machineconfigs/inc/message.txt"
 p
 
-p "# 🙋‍♂️ But now we hae a new problem. How do we make sure the MachineConfig"
+p "# 🙋‍♂️ But now we have a new problem. How do we make sure the MachineConfig"
 p "#    is up to date with the new message? 🤔"
 p
 p "# 👉 The short non-scaling answer is:"
-DEMO_COMMENT_COLOR=$BLUE
+DEMO_COMMENT_COLOR=$RED
 p "# butane -d inc < butane/99-worker-message.bu > 99-worker-message.yaml"
 DEMO_COMMENT_COLOR=$GREEN
 p
 
-p "# 🔧 But here is a Makefile which deduces the dependencies between every machineconfig,"
+p "# 🔧 Here is a Makefile which deduces the dependencies between every machineconfig,"
 p "#    butane file, and any included files. Any MachineConfig file older than"
 p "#    any of its dependencies is rebuilt."
 p
@@ -69,7 +64,7 @@ p
 pei "bat machineconfigs/Makefile"
 p
 
-p "# 🎯 The default target teases out the dependencies and rebuilds only the stale machineconfigs."
+p "# 🎯 The default target teases out the dependencies and stores them in a deps file."
 p
 p "# ⚙️ Here is the dependency file for the above machineconfig"
 pei "bat machineconfigs/.deps/99-worker-message.d"
@@ -82,8 +77,12 @@ p "# 🔧 Now use make to rebuild only the machineconfigs needing an update"
 pei "make -C machineconfigs"
 p
 p "# ⚙️ Here is the updated machineconfig with the new message"
-pei "bat -l yaml machineconfigs/99-worker-message.yaml"
+pei "bat machineconfigs/99-worker-message.yaml"
 p
 
 p "# ✍️ Now you can commit the changes to git and let the 🤖s take over."
 p
+
+# cleanup
+git checkout -- machineconfigs/inc/message.txt 2&>/dev/null
+git checkout -- machineconfigs/99-worker-message.yaml 2&>/dev/null
