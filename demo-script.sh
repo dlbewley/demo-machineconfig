@@ -52,13 +52,18 @@ pei "date >> machineconfigs/inc/message.txt"
 pei "bat machineconfigs/inc/message.txt"
 p
 
-p "# 🙋‍♂️ But now we hae a new problem. How do we make sure the machineconfig"
+p "# 🙋‍♂️ But now we hae a new problem. How do we make sure the MachineConfig"
 p "#    is up to date with the new message? 🤔"
 p
+p "# 👉 The short non-scaling answer is:"
+DEMO_COMMENT_COLOR=$BLUE
+p "# butane -d inc < butane/99-worker-message.bu > 99-worker-message.yaml"
+DEMO_COMMENT_COLOR=$GREEN
+p
 
-p "# 🔧 Here is a Makefile which deduces the dependencies between a machineconfig,"
-p "#    a butane file, and any included files."
-p "#    if the machineconfig file is older than any of its dependencies then it is rebuilt"
+p "# 🔧 But here is a Makefile which deduces the dependencies between every machineconfig,"
+p "#    butane file, and any included files. Any MachineConfig file older than"
+p "#    any of its dependencies is rebuilt."
 p
 
 pei "bat machineconfigs/Makefile"
@@ -80,8 +85,5 @@ p "# ⚙️ Here is the updated machineconfig with the new message"
 pei "bat -l yaml machineconfigs/99-worker-message.yaml"
 p
 
-p "# ✍️ Now you can commit the changes to git and let the 🤖 take over."
-
-DEMO_COMMENT_COLOR=$BLUE
-p "# 🎉 SUCCESS!"
-DEMO_COMMENT_COLOR=$GREEN
+p "# ✍️ Now you can commit the changes to git and let the 🤖s take over."
+p
