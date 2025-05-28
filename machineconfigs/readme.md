@@ -6,6 +6,6 @@
 **Instructions:**
 
 * Make any required changes to the `*.bu` files.
-* Make any required changes to the included [scripts](../scripts/).
+* Make any required changes to the [included files](inc/).
 * Run `make` to generate the new MachineConifg YAMLs.
 * `oc apply -k .` them or just commit the changes and let ArgoCD and gitops take the wheel.

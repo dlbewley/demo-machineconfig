@@ -1,6 +1,6 @@
 ---
 variant: openshift
-version: ${OCP_VER}.0
+version: 4.18.0
 metadata:
   name: 99-worker-multipathd-config
   labels:
@@ -16,18 +16,4 @@ storage:
         name: root
       mode: 420
       contents:
-        inline: |
-          # For a complete list of the default configuration values, run either:
-          #  multipath -t
-          # or
-          #  multipathd show config
-          # For a list of configuration options with descriptions, see the
-          # multipath.conf man page.
-          defaults {
-            user_friendly_names yes
-            find_multipaths yes
-          }
-          # include devices for exclusion
-          # see 
-          blacklist {
-          }
+        local: multipath.conf
