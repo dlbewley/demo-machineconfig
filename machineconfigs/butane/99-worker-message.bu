@@ -1,0 +1,15 @@
+---
+variant: openshift
+version: 4.18.0
+metadata:
+  name: 99-worker-message
+  labels:
+    machineconfiguration.openshift.io/role: dne
+
+storage:
+  files:
+    - path: /tmp/message.txt
+      mode: 0644
+      overwrite: true
+      contents:
+        local: message.txt

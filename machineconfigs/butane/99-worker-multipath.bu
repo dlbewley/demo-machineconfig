@@ -1,0 +1,19 @@
+---
+variant: openshift
+version: 4.18.0
+metadata:
+  name: 99-worker-multipathd-config
+  labels:
+    machineconfiguration.openshift.io/role: worker
+systemd:
+  units:
+    - name: multipathd.service
+      enabled: true
+storage:
+  files:
+    - path: /etc/multipath.conf
+      user:
+        name: root
+      mode: 420
+      contents:
+        local: multipath.conf
